@@ -12,11 +12,10 @@ public class UserData {
 	public UserData(JSONObject json) {
 		JSONObject info = json.getJSONObject("info");
 
-		JSONObject object = info.getJSONObject("subscriptions");
-		JSONArray subArray = object.getJSONArray("subscriptions");
+		JSONArray subArray = info.getJSONArray("subscriptions");
 		JSONObject subObject = subArray.getJSONObject(0);
 		
-		this.username = object.getString("username");
+		this.username = info.getString("username");
 		this.subscription = subObject.getString("subscription");
 		this.expiry = subObject.getString("expiry");
 	}
