@@ -2,23 +2,22 @@ package org.spray.keyauth;
 
 import java.util.Scanner;
 
-import org.spray.keyauth.api.KeyApi;
 import org.spray.keyauth.api.KeyAuth;
 
 public class Application {
 
-	private static String url = "https://keyauth.com/api/1.1/";
+	private static String url = "https://keyauth.win/api/1.1/";
 	
 	private static String ownerid = ""; // You can find out the owner id in the profile settings keyauth.com
 	private static String appname = ""; // Application name
 	private static String version = ""; // Application version
 
-	private static KeyApi keyapi = new KeyAuth(appname, ownerid, version, url);
+	private static KeyAuth keyAuth = new KeyAuth(appname, ownerid, version, url);
 
 	public static void main(String[] args) throws InterruptedException {
 		println("KeyAuth API Example");
 		println("\n\n Connecting...");
-		keyapi.init();
+		keyAuth.init();
 
 		println("\n\n [1] Login\n [2] Upgrade\n [3] License key only\n\n Choose option: ");
 
@@ -36,7 +35,7 @@ public class Application {
 			println("\n\n Enter password: ");
 			password = scanner.nextLine();
 
-			keyapi.login(username, password);
+			keyAuth.login(username, password);
 			break;
 		case 2:
 			println("\n\n Enter username: ");
@@ -44,13 +43,13 @@ public class Application {
 			println("\n\n Enter license key: ");
 			key = scanner.nextLine();
 
-			keyapi.upgrade(username, key);
+			keyAuth.upgrade(username, key);
 			break;
 		case 3:
 			println("\n\n Enter license key: ");
 			key = scanner.nextLine();
 
-			keyapi.license(key);
+			keyAuth.license(key);
 			break;
 		default:
 			println("\n\n Invalid Selection");
